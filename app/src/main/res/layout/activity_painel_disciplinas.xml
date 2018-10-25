@@ -19,7 +19,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="420dp">
 
         <TableLayout
             android:layout_width="@dimen/largura_botao_disciplina_painel"
@@ -35,85 +35,22 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/botao_l1_c1"
+                        android:id="@+id/botao_001"
                         android:layout_width="@dimen/largura_botao_disciplina_painel"
                         android:layout_height="wrap_content" />
 
                     <Button
-                        android:id="@+id/botao_l1_c2"
+                        android:id="@+id/botao_002"
                         android:layout_width="@dimen/largura_botao_disciplina_painel"
                         android:layout_height="wrap_content" />
 
                     <Button
-                        android:id="@+id/botao_l1_c3"
+                        android:id="@+id/botao_003"
                         android:layout_width="@dimen/largura_botao_disciplina_painel"
                         android:layout_height="wrap_content" />
 
                     <Button
-                        android:id="@+id/botao_l1_c4"
-                        android:layout_width="@dimen/largura_botao_disciplina_painel"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </TableRow>
-
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/botao_l2_c1"
-                        android:layout_width="@dimen/largura_botao_disciplina_painel"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:id="@+id/botao_l2_c2"
-                        android:layout_width="@dimen/largura_botao_disciplina_painel"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:id="@+id/botao_l2_c3"
-                        android:layout_width="@dimen/largura_botao_disciplina_painel"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:id="@+id/botao_l2_c4"
-                        android:layout_width="@dimen/largura_botao_disciplina_painel"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/botao_l3_c1"
-                        android:layout_width="@dimen/largura_botao_disciplina_painel"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:id="@+id/botao_l3_c2"
-                        android:layout_width="@dimen/largura_botao_disciplina_painel"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:id="@+id/botao_l3_c3"
-                        android:layout_width="@dimen/largura_botao_disciplina_painel"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:id="@+id/botao_l3_c4"
+                        android:id="@+id/botao_004"
                         android:layout_width="@dimen/largura_botao_disciplina_painel"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -130,22 +67,85 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/botao_l4_c1"
+                        android:id="@+id/botao_009"
                         android:layout_width="@dimen/largura_botao_disciplina_painel"
                         android:layout_height="wrap_content" />
 
                     <Button
-                        android:id="@+id/botao_l4_c2"
+                        android:id="@+id/botao_010"
                         android:layout_width="@dimen/largura_botao_disciplina_painel"
                         android:layout_height="wrap_content" />
 
                     <Button
-                        android:id="@+id/botao_l4_c3"
+                        android:id="@+id/botao_011"
                         android:layout_width="@dimen/largura_botao_disciplina_painel"
                         android:layout_height="wrap_content" />
 
                     <Button
-                        android:id="@+id/botao_l4_c4"
+                        android:id="@+id/botao_012"
+                        android:layout_width="@dimen/largura_botao_disciplina_painel"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/botao_017"
+                        android:layout_width="@dimen/largura_botao_disciplina_painel"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/botao_018"
+                        android:layout_width="@dimen/largura_botao_disciplina_painel"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/botao_019"
+                        android:layout_width="@dimen/largura_botao_disciplina_painel"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/botao_020"
+                        android:layout_width="@dimen/largura_botao_disciplina_painel"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/botao_025"
+                        android:layout_width="@dimen/largura_botao_disciplina_painel"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/botao_026"
+                        android:layout_width="@dimen/largura_botao_disciplina_painel"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/botao_027"
+                        android:layout_width="@dimen/largura_botao_disciplina_painel"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/botao_028"
                         android:layout_width="@dimen/largura_botao_disciplina_painel"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -153,5 +153,11 @@
 
         </TableLayout>
     </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/emailRodapeId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="a@b.com" />
 
 </LinearLayout>

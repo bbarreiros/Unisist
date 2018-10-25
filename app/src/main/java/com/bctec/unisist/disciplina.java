@@ -1,16 +1,51 @@
 package com.bctec.unisist;
 
 public class disciplina {
-    private String nome, sigla;
-    private int posicaoLinha, posicaoColuna;
-    boolean visivel;
+    private String nome, sigla, ementa;
+    private int id, posicaoGrid;
+    private boolean visivel;
+    private disciplina disciplinaRequisito;
 
-    public disciplina(String nome, String sigla, int posicaoLinha, int posicaoColuna, boolean visivel) {
+    public disciplina getDisciplinaRequisito() {
+        return disciplinaRequisito;
+    }
+
+    public void setDisciplinaRequisito(disciplina disciplinaRequisito) {
+        this.disciplinaRequisito = disciplinaRequisito;
+    }
+
+    public disciplina(String nome, String sigla, int id, boolean visivel) {
         this.nome = nome;
         this.sigla = sigla;
-        this.posicaoLinha = posicaoLinha;
-        this.posicaoColuna = posicaoColuna;
+        this.id = id;
+        this.posicaoGrid = id;
         this.visivel = visivel;
+        this.ementa = "You’ll find out. Now, now, Biff, now, I never noticed any blindspot before when I would drive it. Hi, son. Alright, okay listen, keep your pants on, she’s over in the cafe. God, how do you do this? What made you change your mind, George? Doc? Am I to understand you’re still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in";
+
+    }
+
+    public int getPosicaoGrid() {
+        return posicaoGrid;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPosicaoGrid(int posicaoGrid) {
+        this.posicaoGrid = posicaoGrid;
+    }
+
+    public String getEmenta() {
+        return ementa;
+    }
+
+    public void setEmenta(String ementa) {
+        this.ementa = ementa;
     }
 
     public String getSigla() {
@@ -29,22 +64,6 @@ public class disciplina {
         this.nome = nome;
     }
 
-    public int getPosicaoLinha() {
-        return posicaoLinha;
-    }
-
-    public void setPosicaoLinha(int posicaoLinha) {
-        this.posicaoLinha = posicaoLinha;
-    }
-
-    public int getPosicaoColuna() {
-        return posicaoColuna;
-    }
-
-    public void setPosicaoColuna(int posicaoColuna) {
-        this.posicaoColuna = posicaoColuna;
-    }
-
     public boolean isVisivel() {
         return visivel;
     }
@@ -52,5 +71,7 @@ public class disciplina {
     public void setVisivel(boolean visivel) {
         this.visivel = visivel;
     }
+
+
 
 }

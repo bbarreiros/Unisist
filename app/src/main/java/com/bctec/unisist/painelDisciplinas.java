@@ -1,9 +1,13 @@
 package com.bctec.unisist;
 
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -11,9 +15,11 @@ import java.util.List;
 
 public class painelDisciplinas extends AppCompatActivity {
 
-    private Button botaoAtual;
+    private Button botaoDisciplina001, botaoDisciplina025;
 
-    public List<disciplina> listaDisciplinas = new ArrayList<disciplina>();
+    private TextView emailRodape;
+
+    public static List<disciplina> listaDisciplinas = new ArrayList<disciplina>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +30,48 @@ public class painelDisciplinas extends AppCompatActivity {
 
         preparaBotoesGrade();
 
+        emailRodape = findViewById(R.id.emailRodapeId);
 
-        View b = findViewById(R.id.botao_l3_c2);
+        Bundle extra = getIntent().getExtras();
 
-        b.setVisibility(View.INVISIBLE);
+        if (extra != null){
+            String texto = extra.getString("email");
+            emailRodape.setText(texto);
+            //Toast.makeText(painelDisciplinas.this, texto , Toast.LENGTH_LONG).show();
+        }
+
+        botaoDisciplina001 = findViewById(R.id.botao_001);
+        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                //Toast.makeText(painelDisciplinas.this, montaIdBotaoDisciplina(1) , Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(painelDisciplinas.this, visaoDisciplina.class);
+
+                intent.putExtra("idDisciplina", "1" );
+                startActivity(intent);
+
+            }
+        });
+        botaoDisciplina025 = findViewById(R.id.botao_026);
+        botaoDisciplina025.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                Intent intent = new Intent(painelDisciplinas.this, visaoDisciplina.class);
+
+                intent.putExtra("idDisciplina", 26 );
+                startActivity(intent);
+
+            }
+        });
 
     }
 
-    private void preparaBotoesGrade(){
+     private void preparaBotoesGrade(){
 
-        int qtdDisciplinas, indice, posicaoLinha, posicaoColuna;
+        int qtdDisciplinas, indice, posicaoGrid;
         String idBotaoAtual, siglaDisciplinaAtual;
         disciplina disciplinaAtual;
         boolean visivel;
@@ -41,29 +79,23 @@ public class painelDisciplinas extends AppCompatActivity {
         qtdDisciplinas = listaDisciplinas.size() -1;
         Button botaoAtual;
 
-        String texto = Integer.toString(qtdDisciplinas);
-
-       // Toast.makeText(painelDisciplinas.this, texto , Toast.LENGTH_LONG).show();
 
         if (qtdDisciplinas >0){
-            for (indice = 1 ; indice <= qtdDisciplinas; indice++){
+            for (indice = 0 ; indice <= qtdDisciplinas; indice++){
                 disciplinaAtual = listaDisciplinas.get(indice);
-                posicaoLinha =  disciplinaAtual.getPosicaoLinha();
-                posicaoColuna = disciplinaAtual.getPosicaoColuna();
+                posicaoGrid =  disciplinaAtual.getPosicaoGrid();
                 visivel = disciplinaAtual.isVisivel();
                 siglaDisciplinaAtual = disciplinaAtual.getSigla();
 
-                idBotaoAtual = "botao_l"+Integer.toString(posicaoLinha)+"_c"+Integer.toString(posicaoColuna);
-
-               // Toast.makeText(painelDisciplinas.this, idBotaoAtual , Toast.LENGTH_LONG);
+                idBotaoAtual = montaIdBotaoDisciplina(posicaoGrid);
 
                 int resID = getResources().getIdentifier(idBotaoAtual, "id", getPackageName());
+
                 botaoAtual = (Button) findViewById(resID);
 
                 if (visivel == false)
                     botaoAtual.setVisibility(View.INVISIBLE);
                 botaoAtual.setText(siglaDisciplinaAtual);
-
             }
         }
 
@@ -74,56 +106,85 @@ public class painelDisciplinas extends AppCompatActivity {
 
         disciplina disciplinaAtual;
 
-        disciplinaAtual = new disciplina("Fundamendos de Sstemas de Informação", "FSI", 1, 1, true);
+        disciplinaAtual = new disciplina("Fundamendos de Sistemas de Informação", "FSI", 1, true);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual =  new disciplina("Fundamendos de Sstemas de Informação", "FSI", 1, 1, true);
+        disciplinaAtual = new disciplina("", "", 2, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 1, 2, false);
+        disciplinaAtual = new disciplina("", "", 3, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 1, 3, false);
+        disciplinaAtual = new disciplina("Análise de Sistemas", "AS", 4,  true);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("Análise de Sistemas", "AS", 1, 4, true);
+        disciplinaAtual = new disciplina("", "", 9, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 2, 1, false);
+        disciplinaAtual = new disciplina("", "", 10, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 2, 2, false);
+        disciplinaAtual = new disciplina("", "", 11, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 2, 3, false);
+        disciplinaAtual = new disciplina("", "", 12, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 2, 4, false);
+        disciplinaAtual = new disciplina("", "", 17, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 3, 1, false);
+        disciplinaAtual = new disciplina("", "", 18, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 3, 2, false);
+        disciplinaAtual = new disciplina("Banco de Dados I", "BD I", 19,  true);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("Banco de Dados I", "BD I", 3, 3, true);
+        disciplinaAtual = new disciplina("", "", 20, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 3, 4, false);
+        disciplinaAtual = new disciplina("Técnicas de Programação I", "TP I", 25,  true);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("Técnicas de Programação I", "TP I", 4, 1, true);
-        listaDisciplinas.add(disciplinaAtual);
+        disciplina requisito = disciplinaAtual;
 
-        disciplinaAtual = new disciplina("Técnicas de Programação II", "TP II", 4, 2, true);
+        disciplinaAtual = new disciplina("Técnicas de Programação II", "TP II", 26,  true);
         listaDisciplinas.add(disciplinaAtual);
+        disciplinaAtual.setDisciplinaRequisito(requisito);
 
-        disciplinaAtual = new disciplina("Estrutura de Dados I", "EDD I", 4, 3, true);
-        listaDisciplinas.add(disciplinaAtual);
+        requisito = disciplinaAtual;
 
-        disciplinaAtual = new disciplina("Estrutura de Dados II", "EDD II", 4, 4, true);
+        disciplinaAtual = new disciplina("Estrutura de Dados I", "EDD I", 27,  true);
         listaDisciplinas.add(disciplinaAtual);
+        disciplinaAtual.setDisciplinaRequisito(requisito);
+
+        disciplinaAtual = new disciplina("Estrutura de Dados II", "EDD II", 28, true);
+        listaDisciplinas.add(disciplinaAtual);
+        disciplinaAtual.setDisciplinaRequisito(requisito);
 
         }
+
+    @Nullable
+    public static disciplina encontraDisciplinaPeloID(String codigo){
+        int qtdDisciplinas = listaDisciplinas.size()-1, indice, idAtual;
+        disciplina disciplinaAtual;
+
+        for (indice =0; indice <= qtdDisciplinas; indice++){
+            disciplinaAtual = listaDisciplinas.get(indice);
+            idAtual = disciplinaAtual.getId();
+            //Log.d("idAtual",Integer.toString(idAtual));
+            //Log.d("codigo",codigo);
+            if (codigo.equals(Integer.toString(idAtual))){
+                return disciplinaAtual;
+            }
+        }
+        return null;
+    }
+
+    public String montaIdBotaoDisciplina(int id){
+        return "botao_" + String.format("%03d", id);
+    }
+
+    /*public static ArrayList retornaListaDisciplinas(){
+        List<disciplina> listaDisciplinasOut = listaDisciplinas;
+    }*/
 }

@@ -6,4 +6,6 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="largura_botao_disciplina_painel">120dp</dimen>
+    <dimen name="alturalinha">40dp</dimen>
+    <dimen name="largura_switch_disciplina_painel">100dp</dimen>
 </resources>

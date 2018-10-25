@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".painelDisciplinas" />
+        <activity android:name=".visaoDisciplina"></activity>
     </application>
 
 </manifest>
