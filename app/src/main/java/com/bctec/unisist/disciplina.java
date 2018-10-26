@@ -3,7 +3,7 @@ package com.bctec.unisist;
 public class disciplina {
     private String nome, sigla, ementa;
     private int id, posicaoGrid;
-    private boolean visivel;
+    private boolean visivel, jaCursou, querCursar;
     private disciplina disciplinaRequisito;
 
     public disciplina getDisciplinaRequisito() {
@@ -14,15 +14,34 @@ public class disciplina {
         this.disciplinaRequisito = disciplinaRequisito;
     }
 
+    public boolean isJaCursou() {
+        return jaCursou;
+    }
+
+    public void setJaCursou(boolean jaCursou) {
+        this.jaCursou = jaCursou;
+    }
+
+    public boolean isQuerCursar() {
+        return querCursar;
+    }
+
+    public void setQuerCursar(boolean querCursar) {
+        this.querCursar = querCursar;
+    }
+
     public disciplina(String nome, String sigla, int id, boolean visivel, disciplina disciplinaRequisito) {
         this.nome = nome;
         this.sigla = sigla;
         this.id = id;
+
         this.posicaoGrid = id;
         this.visivel = visivel;
         this.ementa = "You’ll find out. Now, now, Biff, now, I never noticed any blindspot before when I would drive it. Hi, son. Alright, okay listen, keep your pants on, she’s over in the cafe. God, how do you do this? What made you change your mind, George? Doc? Am I to understand you’re still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in";
         this.ementa = " " + this.ementa + this.ementa + this.ementa;
         this.disciplinaRequisito = disciplinaRequisito;
+        this.jaCursou = false;
+        this.querCursar = false;
     }
 
     public disciplina(String nome, String sigla, int id, boolean visivel) {
@@ -32,6 +51,8 @@ public class disciplina {
         this.posicaoGrid = id;
         this.visivel = visivel;
         this.ementa = "You’ll find out. Now, now, Biff, now, I never noticed any blindspot before when I would drive it. Hi, son. Alright, okay listen, keep your pants on, she’s over in the cafe. God, how do you do this? What made you change your mind, George? Doc? Am I to understand you’re still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in";
+        this.jaCursou = false;
+        this.querCursar = false;
     }
 
 

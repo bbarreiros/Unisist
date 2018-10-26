@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimaryDark">#002757</color>
+    <color name="colorPrimaryLight">#5d7ab4</color>
+    <color name="colorAccent">#ea4335</color>
     <color name="colorAzulFundo">#2b4e84</color>
-    <color name="colorCinzaFundoTexto">#dcdcdc</color>
+    <color name="colorJaCursou">#00FF00</color>
+    <color name="colorQuerCursar">#0000FF</color>
+    <color name="colorCinzaFundoTexto">#f2f2f2</color>
+    <color name="colorCinzaGoogle">#f2f2f2</color>
+    <color name="colorVermelhoGoogle">#ea4335</color>
+    <color name="colorVerdeGoogle">#34a853</color>
+    <color name="colorAzulGoogle">#4285f4</color>
+    <color name="colorAmareloGoogle">#fbbc05</color>
 </resources>
