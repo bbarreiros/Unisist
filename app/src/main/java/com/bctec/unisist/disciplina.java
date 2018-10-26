@@ -14,6 +14,17 @@ public class disciplina {
         this.disciplinaRequisito = disciplinaRequisito;
     }
 
+    public disciplina(String nome, String sigla, int id, boolean visivel, disciplina disciplinaRequisito) {
+        this.nome = nome;
+        this.sigla = sigla;
+        this.id = id;
+        this.posicaoGrid = id;
+        this.visivel = visivel;
+        this.ementa = "You’ll find out. Now, now, Biff, now, I never noticed any blindspot before when I would drive it. Hi, son. Alright, okay listen, keep your pants on, she’s over in the cafe. God, how do you do this? What made you change your mind, George? Doc? Am I to understand you’re still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in";
+        this.ementa = " " + this.ementa + this.ementa + this.ementa;
+        this.disciplinaRequisito = disciplinaRequisito;
+    }
+
     public disciplina(String nome, String sigla, int id, boolean visivel) {
         this.nome = nome;
         this.sigla = sigla;
@@ -21,8 +32,8 @@ public class disciplina {
         this.posicaoGrid = id;
         this.visivel = visivel;
         this.ementa = "You’ll find out. Now, now, Biff, now, I never noticed any blindspot before when I would drive it. Hi, son. Alright, okay listen, keep your pants on, she’s over in the cafe. God, how do you do this? What made you change your mind, George? Doc? Am I to understand you’re still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in";
-
     }
+
 
     public int getPosicaoGrid() {
         return posicaoGrid;

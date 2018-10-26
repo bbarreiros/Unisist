@@ -15,7 +15,7 @@ import java.util.List;
 
 public class painelDisciplinas extends AppCompatActivity {
 
-    private Button botaoDisciplina001, botaoDisciplina025;
+    private Button botaoDisciplina001, botaoDisciplina026;
 
     private TextView emailRodape;
 
@@ -45,27 +45,26 @@ public class painelDisciplinas extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                //Toast.makeText(painelDisciplinas.this, montaIdBotaoDisciplina(1) , Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(painelDisciplinas.this, visaoDisciplina.class);
-
-                intent.putExtra("idDisciplina", "1" );
-                startActivity(intent);
-
+                onClickBotaoGenerico("1");
             }
         });
-        botaoDisciplina025 = findViewById(R.id.botao_026);
-        botaoDisciplina025.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplina026 = findViewById(R.id.botao_026);
+        botaoDisciplina026.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
-                Intent intent = new Intent(painelDisciplinas.this, visaoDisciplina.class);
-
-                intent.putExtra("idDisciplina", 26 );
-                startActivity(intent);
+                onClickBotaoGenerico("26");
 
             }
         });
+
+    }
+
+    private void onClickBotaoGenerico(String idBotao){
+        Intent intent = new Intent(painelDisciplinas.this, visaoDisciplina.class);
+
+        intent.putExtra("idDisciplina", idBotao );
+        startActivity(intent);
 
     }
 
@@ -80,8 +79,8 @@ public class painelDisciplinas extends AppCompatActivity {
         Button botaoAtual;
 
 
-        if (qtdDisciplinas >0){
-            for (indice = 0 ; indice <= qtdDisciplinas; indice++){
+        if (qtdDisciplinas >1){
+            for (indice = 1 ; indice <= qtdDisciplinas; indice++){
                 disciplinaAtual = listaDisciplinas.get(indice);
                 posicaoGrid =  disciplinaAtual.getPosicaoGrid();
                 visivel = disciplinaAtual.isVisivel();
@@ -104,62 +103,67 @@ public class painelDisciplinas extends AppCompatActivity {
 
     private void iniciaDisciplinas(){
 
-        disciplina disciplinaAtual;
+        disciplina disciplinaAtual, disciplinaSemRequisito;
 
-        disciplinaAtual = new disciplina("Fundamendos de Sistemas de Informação", "FSI", 1, true);
+        disciplinaAtual = new disciplina("Disciplina sem Requisitos", "DSR", 0, false);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 2, false);
+        disciplinaSemRequisito = disciplinaAtual;
+
+        disciplinaAtual = new disciplina("Fundamendos de Sistemas de Informação", "FSI", 1, true, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 3, false);
+        disciplinaAtual = new disciplina("", "", 2, false, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("Análise de Sistemas", "AS", 4,  true);
+        disciplinaAtual = new disciplina("", "", 3, false, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 9, false);
+        disciplinaAtual = new disciplina("Análise de Sistemas", "AS", 4,  true, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 10, false);
+        disciplinaAtual = new disciplina("", "", 9, false, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 11, false);
+        disciplinaAtual = new disciplina("", "", 10, false, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 12, false);
+        disciplinaAtual = new disciplina("", "", 11, false, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 17, false);
+        disciplinaAtual = new disciplina("", "", 12, false, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 18, false);
+        disciplinaAtual = new disciplina("", "", 17, false, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("Banco de Dados I", "BD I", 19,  true);
+        disciplinaAtual = new disciplina("", "", 18, false, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("", "", 20, false);
+        disciplinaAtual = new disciplina("Banco de Dados I", "BD I", 19,  true, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
-        disciplinaAtual = new disciplina("Técnicas de Programação I", "TP I", 25,  true);
+        disciplinaAtual = new disciplina("", "", 20, false, disciplinaSemRequisito);
+        listaDisciplinas.add(disciplinaAtual);
+
+        disciplinaAtual = new disciplina("Técnicas de Programação I", "TP I", 25,  true, disciplinaSemRequisito);
         listaDisciplinas.add(disciplinaAtual);
 
         disciplina requisito = disciplinaAtual;
 
-        disciplinaAtual = new disciplina("Técnicas de Programação II", "TP II", 26,  true);
+        disciplinaAtual = new disciplina("Técnicas de Programação II", "TP II", 26,  true, requisito);
         listaDisciplinas.add(disciplinaAtual);
-        disciplinaAtual.setDisciplinaRequisito(requisito);
+        //disciplinaAtual.setDisciplinaRequisito(requisito);
 
         requisito = disciplinaAtual;
 
-        disciplinaAtual = new disciplina("Estrutura de Dados I", "EDD I", 27,  true);
+        disciplinaAtual = new disciplina("Estrutura de Dados I", "EDD I", 27,  true, requisito);
         listaDisciplinas.add(disciplinaAtual);
-        disciplinaAtual.setDisciplinaRequisito(requisito);
+        //disciplinaAtual.setDisciplinaRequisito(requisito);
 
-        disciplinaAtual = new disciplina("Estrutura de Dados II", "EDD II", 28, true);
+        disciplinaAtual = new disciplina("Estrutura de Dados II", "EDD II", 28, true, requisito);
         listaDisciplinas.add(disciplinaAtual);
-        disciplinaAtual.setDisciplinaRequisito(requisito);
+        //disciplinaAtual.setDisciplinaRequisito(requisito);
 
         }
 
