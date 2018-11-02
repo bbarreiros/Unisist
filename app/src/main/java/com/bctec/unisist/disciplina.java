@@ -1,6 +1,11 @@
 package com.bctec.unisist;
 
 public class disciplina {
+
+    /*
+     * Desenvolvido por: Bruno Cesar Pereira
+     * Descrição: Classe das disciplinas
+     */
     private String nome, sigla, ementa;
     private int id, posicaoGrid;
     private boolean visivel, jaCursou, querCursar;
@@ -30,6 +35,9 @@ public class disciplina {
         this.querCursar = querCursar;
     }
 
+    /* Está repetido, mas não consegui fazer um construtor chamar outro construtor.
+     * Sobrecarga com diferença que esse construtor recebe como parãmetro a diciplina requisito
+     **/
     public disciplina(String nome, String sigla, int id, boolean visivel, disciplina disciplinaRequisito) {
         this.nome = nome;
         this.sigla = sigla;
@@ -44,6 +52,7 @@ public class disciplina {
         this.querCursar = false;
     }
 
+    /* Precisei criar essa pois a disciplina genérica "Disciplina sem Requisitos" é a primeira a ser criada. Não tem como chamar o outro constructor sem que haja uma disciplina já existente.*/
     public disciplina(String nome, String sigla, int id, boolean visivel) {
         this.nome = nome;
         this.sigla = sigla;

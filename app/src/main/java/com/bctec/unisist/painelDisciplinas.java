@@ -20,6 +20,17 @@ import java.util.List;
 
 public class painelDisciplinas extends AppCompatActivity {
 
+    /*
+     * Desenvolvido por: Bruno Cesar Pereira
+     * Descrição: Activity da com o painel de disciplinas
+     * Implementa os casos de uso:
+     *  04 Visualizar Organograma de Disciplinas
+     *  13 VIsualizar painel situação Aluno
+     * Implementa os RF:
+     *  05 O sistema deve permitir exibição do organograma público de disciplinas
+     *  08 O sistema deve permitir exibição do organograma particular de disciplinas
+     */
+
     private Button botaoDisciplina001, botaoDisciplina026;
 
     private TextView emailRodape;
@@ -35,8 +46,10 @@ public class painelDisciplinas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_painel_disciplinas);
 
+        /* Na primeira vez que a activity é chamada, chama essa função que cria os objetos de discilpina*/
         iniciaDisciplinas();
 
+        /* Monta os botões da grade de acordo com os nomes e atributos de visibilidade*/
         preparaBotoesGrade();
 
         verDisciplinasCursadas = false;
@@ -46,11 +59,15 @@ public class painelDisciplinas extends AppCompatActivity {
         Bundle extra = getIntent().getExtras();
 
         if (extra != null){
+            /*
+            *Recebe o extra vindo da activity Main contendo a string do email
+             */
             String texto = extra.getString("email");
             emailRodape.setText(texto);
             //Toast.makeText(painelDisciplinas.this, texto , Toast.LENGTH_LONG).show();
         }
 
+        /* Quando algum dos botões de disciplina é clicado, chama a função que dispara a activity visaoDisciplina passando como parametro o id da disciplina*/
         botaoDisciplina001 = findViewById(R.id.botao_001);
         botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -337,7 +354,7 @@ public class painelDisciplinas extends AppCompatActivity {
             }
         });*/
 
-
+        /* botão para ligar ou desligar a visão de disciplinas cursadas/pretendidas*/
         switchVerDisciplinasCursadas = findViewById(R.id.switchVerDisciplinasCursadas);
 
         switchVerDisciplinasCursadas.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -358,10 +375,13 @@ public class painelDisciplinas extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
 
+        /* Remonta os botões pois pode ter havido alteração nas disciplinas cursadas ou pretendidas*/
         preparaBotoesGrade();
     }
 
     private void onClickBotaoGenerico(String idBotao){
+
+        /* Inicia a tela visaoDisciplina passando como parametro o id da disciplina*/
         Intent intent = new Intent(painelDisciplinas.this, visaoDisciplina.class);
 
         intent.putExtra("idDisciplina", idBotao );
@@ -371,6 +391,8 @@ public class painelDisciplinas extends AppCompatActivity {
 
      private void preparaBotoesGrade(){
 
+        /* Essa função preenche o texto, cores e visibilidade dos botões de acordo com os respectivos atributos dos objetos Disciplina */
+
         int qtdDisciplinas, indice, posicaoGrid;
         String idBotaoAtual, siglaDisciplinaAtual;
         disciplina disciplinaAtual;
@@ -379,7 +401,7 @@ public class painelDisciplinas extends AppCompatActivity {
         qtdDisciplinas = listaDisciplinas.size() -1;
         Button botaoAtual;
 
-
+        /* Percorre o vetor que guarda todas as disciplinas*/
         if (qtdDisciplinas >1){
             for (indice = 1 ; indice <= qtdDisciplinas; indice++){
                 disciplinaAtual = listaDisciplinas.get(indice);
@@ -389,16 +411,22 @@ public class painelDisciplinas extends AppCompatActivity {
                 jaCursou = disciplinaAtual.isJaCursou();
                 querCursar = disciplinaAtual.isQuerCursar();
 
+                /* chama a função que monta o id dos botões a partir da sua posição no grid
+                * formato do id: "botao_" + "xx" esse xx é um inteiro
+                * */
                 idBotaoAtual = montaIdBotaoDisciplina(posicaoGrid);
 
+                /* com o id do botão em string, chama essa função que encontra o recurso usando essa string*/
                 int resID = getResources().getIdentifier(idBotaoAtual, "id", getPackageName());
 
                 botaoAtual = (Button) findViewById(resID);
 
+                /* Faz as atribuições de visibilidade*/
                 if (visivel == false)
                     botaoAtual.setVisibility(View.INVISIBLE);
                 botaoAtual.setText(siglaDisciplinaAtual);
 
+                /* Faz as atribuições de cores para jaCursou e querCursar*/
                 if(verDisciplinasCursadas){
                     if(jaCursou) {
                         PorterDuffColorFilter colorFilterJaCursou = new PorterDuffColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
@@ -422,6 +450,7 @@ public class painelDisciplinas extends AppCompatActivity {
 
     private void iniciaDisciplinas(){
 
+        /* Função para carga inicial das disciplinas. Deve ser substituida por serviço externo*/
         disciplina disciplinaAtual, disciplinaSemRequisito;
 
         disciplinaAtual = new disciplina("Disciplina sem Requisitos", "DSR", 0, false);
@@ -488,6 +517,8 @@ public class painelDisciplinas extends AppCompatActivity {
 
     @Nullable
     public static disciplina encontraDisciplinaPeloID(String codigo){
+
+        /* Percorre o vetor das disciplinas e retorna o id da disciplina encontrada caso exista*/
         int qtdDisciplinas = listaDisciplinas.size()-1, indice, idAtual;
         disciplina disciplinaAtual;
 
@@ -504,6 +535,7 @@ public class painelDisciplinas extends AppCompatActivity {
     }
 
     public String montaIdBotaoDisciplina(int id){
+        /* Recebe a string do codigo da disciplina e retorna a string do codigo do botao respectivo*/
         return "botao_" + String.format("%03d", id);
     }
 

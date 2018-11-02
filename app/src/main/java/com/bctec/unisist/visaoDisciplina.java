@@ -13,6 +13,19 @@ import android.widget.Toast;
 
 public class visaoDisciplina extends AppCompatActivity {
 
+    /*
+     * Desenvolvido por: Bruno Cesar Pereira
+     * Descrição: Activity da visão da disciplinas
+     * Implementa os casos de uso:
+     *  05 Visualizar Oferta de Disciplina
+     *  15 Informar Disciplina Pretendida
+     *  xx Informar Disciplina Cursada
+     * Implementa os RF:
+     *  xx O sistema deve permitir exibição de Disciplinas
+     *  xx O sistema deve permitir informar o cumprimento da disciplina
+     *  04 O sistema deve permitir informar ppretenção em disciplinas
+     */
+
     private disciplina disciplinaAtual, disciplinaRequisito;
     private String idDisciplina;
     private Button botaoRequisito;
@@ -26,11 +39,17 @@ public class visaoDisciplina extends AppCompatActivity {
 
         Bundle extra = getIntent().getExtras();
 
+        /* Recebe como extra o id da disciplina
+         * Ele seá usado para montar as views com o nome, sigla, ementa e disciplina requisito
+         */
+
         if (extra != null){
             idDisciplina = extra.getString("idDisciplina");
 
+            /* Chama a função que monta as views*/
             preencheViews(idDisciplina);
 
+            /* Deveria estar dentro da função preencheViews?*/
             botaoRequisito = findViewById(R.id.botaoDisciplnaRequisitoId);
             botaoRequisito.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -54,6 +73,7 @@ public class visaoDisciplina extends AppCompatActivity {
         jaCursou = disciplinaAtual.isJaCursou();
         querCursar = disciplinaAtual.isQuerCursar();
 
+        /* Botão para informar se o aluno já cursou a referida disciplina*/
         switchJaCursou = findViewById(R.id.switchJaCursouId);
         switchJaCursou.setChecked(jaCursou);
 
@@ -70,6 +90,7 @@ public class visaoDisciplina extends AppCompatActivity {
             }
         });
 
+        /* Botão para informar se o aluno quer cursar a referida disciplina no próximo período*/
         switchQuerCursar = findViewById(R.id.switchQueroCursarId);
         switchQuerCursar.setChecked(querCursar);
 
@@ -89,8 +110,11 @@ public class visaoDisciplina extends AppCompatActivity {
     }
 
     private void preencheViews(String idDisciplina){
+
+        /* Chama a função que identifica as disciplinas*/
         disciplinaAtual = painelDisciplinas.encontraDisciplinaPeloID(idDisciplina);
 
+        /* Preenche as views com os atributos da disciplina recebida acima*/
         TextView siglaDisciplina = findViewById(R.id.siglaDiscilpinaID);
         siglaDisciplina.setText(disciplinaAtual.getSigla());
 
