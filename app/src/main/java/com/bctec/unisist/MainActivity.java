@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity  {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
 
-                Intent intent = new Intent(MainActivity.this, painelDisciplinas.class);
+               /* Intent intent = new Intent(MainActivity.this, painelDisciplinas.class);
 
                 String email = textoEmail.getText().toString();
                 intent.putExtra("email", email );
-                startActivity(intent);
+                startActivity(intent);*/
 
             }
 
