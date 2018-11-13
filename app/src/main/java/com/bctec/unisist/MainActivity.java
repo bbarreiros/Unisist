@@ -1,6 +1,7 @@
 package com.bctec.unisist;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,8 +17,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -32,15 +37,18 @@ public class MainActivity extends AppCompatActivity  {
     private TextView textoEmail;
     private static final String TAG = "MainActivity";
     private static final int RC_SIGN_IN = 9000;
+    private static GoogleSignInAccount contaGoogle;
+    private GoogleSignInClient mGoogleSignInClient;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+
+        protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         botaoLogin = findViewById(R.id.botao_login_id);
 
-        textoEmail = findViewById(R.id.caixa_login_id);
+        //removido após integração com google
+        //textoEmail = findViewById(R.id.caixa_login_id);
 
         // Configuração do sign in buscando o email a a build
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -49,7 +57,7 @@ public class MainActivity extends AppCompatActivity  {
                 .requestEmail()
                 .build();
 
-       final GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         botaoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,20 +82,6 @@ public class MainActivity extends AppCompatActivity  {
 ;
 
 
-        // Connect our sign in, sign out and disconnect buttons.
-       /* botaoLogin.setOnClickListener(this);*/
-        //findViewById(R.id.sign_out_button).setOnClickListener(this);
-        //findViewById(R.id.revoke_access_button).setOnClickListener(this);
-        //findViewById(R.id.sign_out_button).setVisibility(View.INVISIBLE);
-        //findViewById(R.id.revoke_access_button).setVisibility(View.INVISIBLE);
-
-        // Configure the ProgressDialog that will be shown if there is a
-        // delay in presenting the user with the next sign in step.
-        /*mConnectionProgressDialog = new ProgressDialog(this);
-        mConnectionProgressDialog.setMessage("Signing in...");*/
-
-
-
     }
 
 
@@ -98,9 +92,9 @@ public class MainActivity extends AppCompatActivity  {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
         // Se o sign in já foi feito, chama a Intent do Painel de Disciplinas
-        if (account != null){
+       /* if (account != null){
             iniciaActivityPainelDisciplinas(account);
-        }
+        }*/
 
     }
     @Override
@@ -111,30 +105,37 @@ public class MainActivity extends AppCompatActivity  {
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            Task<GoogleSignInAccount> contaGoogle = GoogleSignIn.getSignedInAccountFromIntent(data);
             //GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
             //iniciaActivityPainelDisciplinas(account);
-            handleSignInResult(task);
+            handleSignInResult(contaGoogle);
         }
     }
 
     public void iniciaActivityPainelDisciplinas(GoogleSignInAccount acc){
         Intent intent = new Intent(MainActivity.this, painelDisciplinas.class);
 
-        String email = textoEmail.getText().toString();
-        intent.putExtra("email", email );
+        //removido após integração com google
+        //String email = textoEmail.getText().toString();
+        //intent.putExtra("email", email );
+        //intent.putExtra("acc", acc);
         startActivity(intent);
     }
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+    private void handleSignInResult(Task<GoogleSignInAccount> contaGoogleIn) {
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            //GoogleSignInAccount account = contaGoogle.getResult(ApiException.class);
+            contaGoogle  = contaGoogleIn.getResult(ApiException.class);
 
-            // Signed in successfully, show authenticated UI.
-            String msgSucesso = "Bem vindo, ";
-            msgSucesso = msgSucesso + account.getDisplayName();
-            Toast.makeText(MainActivity.this,msgSucesso,  Toast.LENGTH_LONG).show();
-            iniciaActivityPainelDisciplinas(account);
+            //verifica se o email do sign in é do dominio @uniriotec
+            String email = contaGoogle.getEmail();
+            if (isEmailUniriotec(email)){
+                // Signed in successfully, show authenticated UI.
+                String msgSucesso = "Bem vindo, ";
+                msgSucesso = msgSucesso + contaGoogle.getDisplayName();
+                Toast.makeText(MainActivity.this,msgSucesso,  Toast.LENGTH_LONG).show();
+                iniciaActivityPainelDisciplinas(contaGoogle);
+            }
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -142,5 +143,33 @@ public class MainActivity extends AppCompatActivity  {
             Toast.makeText(MainActivity.this, "Falha no sign in",  Toast.LENGTH_LONG).show();
             //updateUI(null);
         }
+    }
+
+    public static GoogleSignInAccount getAccount(){
+        return contaGoogle;
+    }
+
+    private static boolean isEmailUniriotec(String email){
+        boolean isEmailIdValid = false;
+
+        //Verifica se o email do sign in é do dominio @uniriotec.br
+        if (email != null && email.length() > 0) {
+            String expression = "^[\\w\\.-]+@uniriotec.br";
+            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(email);
+            if (matcher.matches()) {
+                isEmailIdValid = true;
+            }
+        }
+        return isEmailIdValid;
+    }
+    private void revokeAccess() {
+        mGoogleSignInClient.revokeAccess()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                    }
+                });
     }
 }

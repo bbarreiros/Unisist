@@ -15,6 +15,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,16 +58,21 @@ public class painelDisciplinas extends AppCompatActivity {
 
         emailRodape = findViewById(R.id.emailRodapeId);
 
-        Bundle extra = getIntent().getExtras();
+        GoogleSignInAccount acc = MainActivity.getAccount();
+        if (acc != null)
+            emailRodape.setText(acc.getEmail());
 
-        if (extra != null){
-            /*
+       // Bundle extra = getIntent().getExtras();
+        /*
+         if (extra != null){
+
             *Recebe o extra vindo da activity Main contendo a string do email
              */
-            String texto = extra.getString("email");
+           /* String texto = extra.getString("email");
             emailRodape.setText(texto);
+
             //Toast.makeText(painelDisciplinas.this, texto , Toast.LENGTH_LONG).show();
-        }
+        }*/
 
         /* Quando algum dos botões de disciplina é clicado, chama a função que dispara a activity visaoDisciplina passando como parametro o id da disciplina*/
         botaoDisciplina001 = findViewById(R.id.botao_001);
