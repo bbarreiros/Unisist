@@ -24,7 +24,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity
+{
 
     /*
     * Desenvolvido por: Bruno Cesar Pereira

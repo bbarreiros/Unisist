@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bctec.unisist">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/unirio"
@@ -17,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".painelDisciplinas" />
-        <activity android:name=".visaoDisciplina"></activity>
+        <activity android:name=".visaoDisciplina" />
+        <activity android:name=".menuOpcoes"></activity>
     </application>
 
 </manifest>

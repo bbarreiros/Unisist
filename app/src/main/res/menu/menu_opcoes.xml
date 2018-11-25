@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bcmc="http://schemas.android.com/tools">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/painelDisciplinasId"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="Painel Disciplinas"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/meuPerfilId"
+        android:orderInCategory="100"
+        android:title="Meu Perfil"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/mapaId"
+        android:orderInCategory="100"
+        android:title="Mapa"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/sairId"
+        android:orderInCategory="100"
+        android:title="always"
+        app:showAsAction="never"/>
 </menu>

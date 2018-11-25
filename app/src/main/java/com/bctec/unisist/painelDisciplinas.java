@@ -1,5 +1,6 @@
 package com.bctec.unisist;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -8,6 +9,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -20,7 +24,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import java.util.ArrayList;
 import java.util.List;
 
-public class painelDisciplinas extends AppCompatActivity {
+public class painelDisciplinas extends AppCompatActivity
+       // implements View.OnClickListener
+{
 
     /*
      * Desenvolvido por: Bruno Cesar Pereira
@@ -37,6 +43,8 @@ public class painelDisciplinas extends AppCompatActivity {
 
     private TextView emailRodape;
 
+    private View barraSuperior;
+
     public static List<disciplina> listaDisciplinas = new ArrayList<disciplina>();
 
     private Switch switchVerDisciplinasCursadas;
@@ -47,6 +55,12 @@ public class painelDisciplinas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_painel_disciplinas);
+
+        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        ab.setLogo(R.drawable.botao_login);
+        ab.setDisplayUseLogoEnabled(true);
+        ab.setDisplayHomeAsUpEnabled(true);
+
 
         /* Na primeira vez que a activity é chamada, chama essa função que cria os objetos de discilpina*/
         iniciaDisciplinas();
@@ -73,6 +87,14 @@ public class painelDisciplinas extends AppCompatActivity {
 
             //Toast.makeText(painelDisciplinas.this, texto , Toast.LENGTH_LONG).show();
         }*/
+
+        // Ao clicar na barra superior, chama a view do menu
+       /* barraSuperior = findViewById(R.id.barraSuperiorPainelDisciplinasId);
+        barraSuperior.setOnClickListener(new View.OnClickListener() {
+            Intent intent = new Intent(painelDisciplinas.this, menuOpcoes.class);
+            startActivity(intent);
+        });*/
+
 
         /* Quando algum dos botões de disciplina é clicado, chama a função que dispara a activity visaoDisciplina passando como parametro o id da disciplina*/
         botaoDisciplina001 = findViewById(R.id.botao_001);
@@ -549,4 +571,71 @@ public class painelDisciplinas extends AppCompatActivity {
     /*public static ArrayList retornaListaDisciplinas(){
         List<disciplina> listaDisciplinasOut = listaDisciplinas;
     }*/
+
+  //  @Override
+  //  public void onClick(View v) {
+        // Ao clicar na barra superior, chama a view do menu
+     /*   barraSuperior = findViewById(R.id.barraSuperiorPainelDisciplinasId);
+        barraSuperior.setOnClickListener(v ){
+            Intent intent = new Intent(painelDisciplinas.this, menuOpcoes.class);
+            startActivity(intent);
+        });*/
+   // }
+
+  /*  @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        super.onCreateOptionsMenu(menu);
+
+        MenuItem m0 = menu.add(0 , 0, 0, "Painel Disciplinas");
+        m0.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
+
+        MenuItem m1 = menu.add(0 , 0, 1, "Perfil do Usuário");
+        m1.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
+
+        MenuItem m2 = menu.add(0 , 0, 2, "Localização");
+        m2.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
+        MenuItem m3 = menu.add(0 , 0, 3, "Sair");
+        m3.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
+        // getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }*/
+
+  // Cria o menu de opções usando as que foram listadas no menu_opcoes.xml
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu){
+      MenuInflater inflater = getMenuInflater();
+      inflater.inflate(R.menu.menu_opcoes, menu);
+      return true;
+  }
+
+  // Controla o que vai ser feito ao clicar em um item do menu
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+          // action with ID action_refresh was selected
+          case R.id.painelDisciplinasId:
+              Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
+              break;
+          // action with ID action_settings was selected
+          case R.id.meuPerfilId:
+              Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+              break;
+          // action with ID action_refresh was selected
+          case R.id.mapaId:
+              Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
+              break;
+          // action with ID action_settings was selected
+          case R.id.sairId:
+              Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+              break;
+          default:
+              break;
+      }
+       return true;
+  }
+
 }
