@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     private static final int RC_SIGN_IN = 9000;
     private static GoogleSignInAccount contaGoogle;
-    private GoogleSignInClient mGoogleSignInClient;
+    private static GoogleSignInClient mGoogleSignInClient;
 
 
         protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +137,10 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this,msgSucesso,  Toast.LENGTH_LONG).show();
                 iniciaActivityPainelDisciplinas(contaGoogle);
             }
+            else{
+                Toast.makeText(this, "Esse email não faz parte do domínio @uniriotec.br",  Toast.LENGTH_LONG).show();
+                fazerSignOut();
+            }
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -164,13 +168,13 @@ public class MainActivity extends AppCompatActivity
         }
         return isEmailIdValid;
     }
-    private void revokeAccess() {
-        mGoogleSignInClient.revokeAccess()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
+    public static void fazerSignOut() {
+        mGoogleSignInClient.signOut();
+            //mGoogleSignInClient.revokeAccess().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            /*        @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // ...
                     }
-                });
+                });*/
     }
 }

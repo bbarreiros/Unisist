@@ -20,7 +20,6 @@
         </activity>
         <activity android:name=".painelDisciplinas" />
         <activity android:name=".visaoDisciplina" />
-        <activity android:name=".menuOpcoes"></activity>
     </application>
 
 </manifest>

@@ -61,10 +61,6 @@ public class painelDisciplinas extends AppCompatActivity
         ab.setDisplayUseLogoEnabled(true);
         ab.setDisplayHomeAsUpEnabled(true);
 
-
-        /* Na primeira vez que a activity é chamada, chama essa função que cria os objetos de discilpina*/
-        iniciaDisciplinas();
-
         /* Monta os botões da grade de acordo com os nomes e atributos de visibilidade*/
         preparaBotoesGrade();
 
@@ -87,14 +83,6 @@ public class painelDisciplinas extends AppCompatActivity
 
             //Toast.makeText(painelDisciplinas.this, texto , Toast.LENGTH_LONG).show();
         }*/
-
-        // Ao clicar na barra superior, chama a view do menu
-       /* barraSuperior = findViewById(R.id.barraSuperiorPainelDisciplinasId);
-        barraSuperior.setOnClickListener(new View.OnClickListener() {
-            Intent intent = new Intent(painelDisciplinas.this, menuOpcoes.class);
-            startActivity(intent);
-        });*/
-
 
         /* Quando algum dos botões de disciplina é clicado, chama a função que dispara a activity visaoDisciplina passando como parametro o id da disciplina*/
         botaoDisciplina001 = findViewById(R.id.botao_001);
@@ -427,12 +415,32 @@ public class painelDisciplinas extends AppCompatActivity
         disciplina disciplinaAtual;
         boolean visivel, jaCursou, querCursar;
 
+        //Toast.makeText(painelDisciplinas.this, "prepara botoes", Toast.LENGTH_SHORT ).show();
+
         qtdDisciplinas = listaDisciplinas.size() -1;
         Button botaoAtual;
+
+         Log.d("idAtual" ,"prepara botoes");
+         Log.d("idAtual",Integer.toString(qtdDisciplinas));
+
+
+
+         /* Na primeira vez que a activity é chamada, chama essa função que cria os objetos de discilpina*/
+         if (qtdDisciplinas == -1){
+             Toast.makeText(painelDisciplinas.this, "inicia disc", Toast.LENGTH_SHORT ).show();
+             Log.d("idAtual","Iniciando Disc");
+             iniciaDisciplinas();
+         }else
+             Log.d("idAtual","Disc já iniciadas");
+
+         //Toast.makeText(this, qtdDisciplinas, Toast.LENGTH_SHORT );
 
         /* Percorre o vetor que guarda todas as disciplinas*/
         if (qtdDisciplinas >1){
             for (indice = 1 ; indice <= qtdDisciplinas; indice++){
+
+                Log.d("idAtual","iniciando: " + Integer.toString(qtdDisciplinas) + " " + Integer.toString(indice));
+
                 disciplinaAtual = listaDisciplinas.get(indice);
                 posicaoGrid =  disciplinaAtual.getPosicaoGrid();
                 visivel = disciplinaAtual.isVisivel();
@@ -572,37 +580,6 @@ public class painelDisciplinas extends AppCompatActivity
         List<disciplina> listaDisciplinasOut = listaDisciplinas;
     }*/
 
-  //  @Override
-  //  public void onClick(View v) {
-        // Ao clicar na barra superior, chama a view do menu
-     /*   barraSuperior = findViewById(R.id.barraSuperiorPainelDisciplinasId);
-        barraSuperior.setOnClickListener(v ){
-            Intent intent = new Intent(painelDisciplinas.this, menuOpcoes.class);
-            startActivity(intent);
-        });*/
-   // }
-
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        super.onCreateOptionsMenu(menu);
-
-        MenuItem m0 = menu.add(0 , 0, 0, "Painel Disciplinas");
-        m0.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-
-
-        MenuItem m1 = menu.add(0 , 0, 1, "Perfil do Usuário");
-        m1.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-
-
-        MenuItem m2 = menu.add(0 , 0, 2, "Localização");
-        m2.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-
-        MenuItem m3 = menu.add(0 , 0, 3, "Sair");
-        m3.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-
-        // getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }*/
 
   // Cria o menu de opções usando as que foram listadas no menu_opcoes.xml
   @Override
@@ -616,22 +593,31 @@ public class painelDisciplinas extends AppCompatActivity
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
       switch (item.getItemId()) {
-          // action with ID action_refresh was selected
+          // Quando o Painel Disciplinas é selecionado
           case R.id.painelDisciplinasId:
               Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
               break;
-          // action with ID action_settings was selected
+          // Quando o meu perfil é selecionado
           case R.id.meuPerfilId:
               Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
               break;
-          // action with ID action_refresh was selected
+          // Quando o mapa é selecionado
           case R.id.mapaId:
               Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
               break;
-          // action with ID action_settings was selected
-          case R.id.sairId:
-              Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+          // Quando log out é selecionado
+          case R.id.logoutID:
+              Toast.makeText(this, "Até logo!", Toast.LENGTH_SHORT).show();
+              MainActivity.fazerSignOut();
+              finish();
+              //MainActivity.mGoogleSignInClient.signOut();
               break;
+          // Quando sair é selecionado
+         /* case R.id.sairId:
+              Toast.makeText(this, "sair", Toast.LENGTH_SHORT).show();
+              finish();
+              System.exit(0);
+              break;*/
           default:
               break;
       }

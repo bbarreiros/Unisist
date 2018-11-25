@@ -18,8 +18,8 @@
         android:title="Mapa"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/sairId"
+        android:id="@+id/logoutID"
         android:orderInCategory="100"
-        android:title="always"
+        android:title="Log Out"
         app:showAsAction="never"/>
 </menu>
