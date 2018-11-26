@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".perfilUsuario">
+
+    <ImageView
+        android:id="@+id/imagemUsuarioId"
+        android:layout_width="@dimen/largura_botao_disciplina_requisito"
+        android:layout_height="@dimen/largura_botao_disciplina_requisito"
+        android:contentDescription="Foto do Usuário"
+        app:srcCompat="@drawable/user_sem_foto"
+        tools:srcCompat="_" />
+
+    <TextView
+        android:id="@+id/nomeUsuarioId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Meu nome" />
+
+    <TextView
+        android:id="@+id/emailUsuarioId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Meu email" />
+
+    <EditText
+        android:id="@+id/bioUsuarioId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="Escreva um pouco sobre você!"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textoViewEstudoID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Estudei no:" />
+
+        <EditText
+            android:id="@+id/nomeEscolaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Colégio ABC" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textoViewMoradiaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Moro aqui:" />
+
+        <EditText
+            android:id="@+id/nomeLocalMoradiaId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Local Moradia" />
+    </LinearLayout>
+
+</LinearLayout>

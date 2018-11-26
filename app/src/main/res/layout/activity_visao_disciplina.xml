@@ -9,19 +9,6 @@
     tools:context=".painelDisciplinas">
 
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:minHeight="?attr/actionBarSize" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/alturalinha"
@@ -110,7 +97,6 @@
             </LinearLayout>
         </ScrollView>
 
-    </LinearLayout>
 
 
 </LinearLayout>

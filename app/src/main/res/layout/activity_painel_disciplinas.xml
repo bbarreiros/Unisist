@@ -8,15 +8,6 @@
     android:orientation="vertical"
     tools:context=".painelDisciplinas">
 
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/barraSuperiorPainelDisciplinasId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:minHeight="?attr/actionBarSize" />
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="420dp">

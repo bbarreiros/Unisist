@@ -1,9 +1,11 @@
 package com.bctec.unisist;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -42,6 +44,12 @@ public class visaoDisciplina extends AppCompatActivity {
         /* Recebe como extra o id da disciplina
          * Ele seá usado para montar as views com o nome, sigla, ementa e disciplina requisito
          */
+
+        // Cria o action Bar:
+        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        ab.setLogo(R.drawable.botao_login);
+        ab.setDisplayUseLogoEnabled(true);
+        ab.setDisplayHomeAsUpEnabled(true);
 
         if (extra != null){
             idDisciplina = extra.getString("idDisciplina");
@@ -127,5 +135,43 @@ public class visaoDisciplina extends AppCompatActivity {
         Button botaoDisciplinaRequidito = findViewById(R.id.botaoDisciplnaRequisitoId);
         disciplinaRequisito = disciplinaAtual.getDisciplinaRequisito();
         botaoDisciplinaRequidito.setText(disciplinaRequisito.getNome());
+    }
+    // Cria o menu de opções usando as que foram listadas no menu_opcoes.xml
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_opcoes, menu);
+        return true;
+    }
+
+    // Controla o que vai ser feito ao clicar em um item do menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Quando o Painel Disciplinas é selecionado
+            case R.id.painelDisciplinasId:
+                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
+                break;
+            // Quando o meu perfil é selecionado
+            case R.id.meuPerfilId:
+                Intent intentPerfil = new Intent(this, perfilUsuario.class);
+                startActivity(intentPerfil);
+                break;
+            // Quando o mapa é selecionado
+            case R.id.mapaId:
+                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
+                break;
+            // Quando log out é selecionado
+            case R.id.logoutID:
+                Toast.makeText(this, "Até logo!", Toast.LENGTH_SHORT).show();
+                MainActivity.fazerSignOut();
+                finish();
+                Intent intentLogout = new Intent(this, MainActivity.class);
+                startActivity(intentLogout);
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }

@@ -39,11 +39,9 @@ public class painelDisciplinas extends AppCompatActivity
      *  08 O sistema deve permitir exibição do organograma particular de disciplinas
      */
 
-    private Button botaoDisciplina001, botaoDisciplina026;
+    private Button botaoDisciplinaAtual;
 
     private TextView emailRodape;
-
-    private View barraSuperior;
 
     public static List<disciplina> listaDisciplinas = new ArrayList<disciplina>();
 
@@ -56,10 +54,11 @@ public class painelDisciplinas extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_painel_disciplinas);
 
+        // Cria o action Bar:
         android.support.v7.app.ActionBar ab = getSupportActionBar();
         ab.setLogo(R.drawable.botao_login);
         ab.setDisplayUseLogoEnabled(true);
-        ab.setDisplayHomeAsUpEnabled(true);
+        //ab.setDisplayHomeAsUpEnabled(true);
 
         /* Monta os botões da grade de acordo com os nomes e atributos de visibilidade*/
         preparaBotoesGrade();
@@ -72,21 +71,9 @@ public class painelDisciplinas extends AppCompatActivity
         if (acc != null)
             emailRodape.setText(acc.getEmail());
 
-       // Bundle extra = getIntent().getExtras();
-        /*
-         if (extra != null){
-
-            *Recebe o extra vindo da activity Main contendo a string do email
-             */
-           /* String texto = extra.getString("email");
-            emailRodape.setText(texto);
-
-            //Toast.makeText(painelDisciplinas.this, texto , Toast.LENGTH_LONG).show();
-        }*/
-
         /* Quando algum dos botões de disciplina é clicado, chama a função que dispara a activity visaoDisciplina passando como parametro o id da disciplina*/
-        botaoDisciplina001 = findViewById(R.id.botao_001);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_001);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -94,8 +81,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_002);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_002);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -103,8 +90,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_003);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_003);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -112,8 +99,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_004);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_004);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -121,8 +108,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-  /*      botaoDisciplina001 = findViewById(R.id.botao_005);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+  /*      botaoDisciplinaAtual = findViewById(R.id.botao_005);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -130,8 +117,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_006);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_006);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -139,8 +126,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_007);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_007);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -148,8 +135,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_008);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_008);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -157,8 +144,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });*/
 
-        botaoDisciplina001 = findViewById(R.id.botao_009);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_009);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -166,16 +153,16 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_010);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_010);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
                 onClickBotaoGenerico("10");
             }
         });
-        botaoDisciplina001 = findViewById(R.id.botao_011);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_011);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -183,8 +170,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_012);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_012);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -192,8 +179,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
- /*       botaoDisciplina001 = findViewById(R.id.botao_013);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+ /*       botaoDisciplinaAtual = findViewById(R.id.botao_013);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -201,8 +188,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_014);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_014);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -210,8 +197,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_015);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_015);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -219,8 +206,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_016);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_016);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -228,8 +215,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });*/
 
-        botaoDisciplina001 = findViewById(R.id.botao_017);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_017);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -237,8 +224,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_018);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_018);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -246,8 +233,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_019);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_019);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -255,16 +242,16 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_020);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_020);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
                 onClickBotaoGenerico("20");
             }
         });
- /*       botaoDisciplina001 = findViewById(R.id.botao_021);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+ /*       botaoDisciplinaAtual = findViewById(R.id.botao_021);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -272,8 +259,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_022);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_022);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -281,8 +268,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_023);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_023);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -290,8 +277,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_024);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_024);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -299,8 +286,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });*/
 
-        botaoDisciplina001 = findViewById(R.id.botao_025);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_025);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -308,8 +295,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_026);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_026);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -317,8 +304,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_027);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_027);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -326,8 +313,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_028);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_028);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -335,8 +322,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-/*        botaoDisciplina001 = findViewById(R.id.botao_029);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+/*        botaoDisciplinaAtual = findViewById(R.id.botao_029);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -344,8 +331,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_030);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_030);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -353,8 +340,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_031);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_031);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -362,8 +349,8 @@ public class painelDisciplinas extends AppCompatActivity
             }
         });
 
-        botaoDisciplina001 = findViewById(R.id.botao_032);
-        botaoDisciplina001.setOnClickListener(new View.OnClickListener() {
+        botaoDisciplinaAtual = findViewById(R.id.botao_032);
+        botaoDisciplinaAtual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -377,12 +364,8 @@ public class painelDisciplinas extends AppCompatActivity
         switchVerDisciplinasCursadas.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (verDisciplinasCursadas){
-                    verDisciplinasCursadas = false;
-                }else{
-                    verDisciplinasCursadas = true;
-                }
-
+                // Muda o estado do botão quando clicado
+                verDisciplinasCursadas = !verDisciplinasCursadas;
                 preparaBotoesGrade();
             }
         });
@@ -391,7 +374,6 @@ public class painelDisciplinas extends AppCompatActivity
     @Override
     protected void onResume(){
         super.onResume();
-
         /* Remonta os botões pois pode ter havido alteração nas disciplinas cursadas ou pretendidas*/
         preparaBotoesGrade();
     }
@@ -415,25 +397,13 @@ public class painelDisciplinas extends AppCompatActivity
         disciplina disciplinaAtual;
         boolean visivel, jaCursou, querCursar;
 
-        //Toast.makeText(painelDisciplinas.this, "prepara botoes", Toast.LENGTH_SHORT ).show();
-
         qtdDisciplinas = listaDisciplinas.size() -1;
         Button botaoAtual;
 
-         Log.d("idAtual" ,"prepara botoes");
-         Log.d("idAtual",Integer.toString(qtdDisciplinas));
-
-
-
          /* Na primeira vez que a activity é chamada, chama essa função que cria os objetos de discilpina*/
          if (qtdDisciplinas == -1){
-             Toast.makeText(painelDisciplinas.this, "inicia disc", Toast.LENGTH_SHORT ).show();
-             Log.d("idAtual","Iniciando Disc");
              iniciaDisciplinas();
-         }else
-             Log.d("idAtual","Disc já iniciadas");
-
-         //Toast.makeText(this, qtdDisciplinas, Toast.LENGTH_SHORT );
+         }
 
         /* Percorre o vetor que guarda todas as disciplinas*/
         if (qtdDisciplinas >1){
@@ -456,10 +426,10 @@ public class painelDisciplinas extends AppCompatActivity
                 /* com o id do botão em string, chama essa função que encontra o recurso usando essa string*/
                 int resID = getResources().getIdentifier(idBotaoAtual, "id", getPackageName());
 
-                botaoAtual = (Button) findViewById(resID);
+                botaoAtual = findViewById(resID);
 
                 /* Faz as atribuições de visibilidade*/
-                if (visivel == false)
+                if (!visivel)
                     botaoAtual.setVisibility(View.INVISIBLE);
                 botaoAtual.setText(siglaDisciplinaAtual);
 
@@ -479,8 +449,6 @@ public class painelDisciplinas extends AppCompatActivity
                     PorterDuffColorFilter colorFilterDesfaz = new PorterDuffColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
                     botaoAtual.getBackground().setColorFilter(colorFilterDesfaz);
                 }
-
-
             }
         }
     }
@@ -576,11 +544,6 @@ public class painelDisciplinas extends AppCompatActivity
         return "botao_" + String.format("%03d", id);
     }
 
-    /*public static ArrayList retornaListaDisciplinas(){
-        List<disciplina> listaDisciplinasOut = listaDisciplinas;
-    }*/
-
-
   // Cria o menu de opções usando as que foram listadas no menu_opcoes.xml
   @Override
   public boolean onCreateOptionsMenu(Menu menu){
@@ -589,39 +552,35 @@ public class painelDisciplinas extends AppCompatActivity
       return true;
   }
 
-  // Controla o que vai ser feito ao clicar em um item do menu
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-      switch (item.getItemId()) {
-          // Quando o Painel Disciplinas é selecionado
-          case R.id.painelDisciplinasId:
-              Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
-              break;
-          // Quando o meu perfil é selecionado
-          case R.id.meuPerfilId:
-              Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
-              break;
-          // Quando o mapa é selecionado
-          case R.id.mapaId:
-              Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
-              break;
-          // Quando log out é selecionado
-          case R.id.logoutID:
-              Toast.makeText(this, "Até logo!", Toast.LENGTH_SHORT).show();
-              MainActivity.fazerSignOut();
-              finish();
-              //MainActivity.mGoogleSignInClient.signOut();
-              break;
-          // Quando sair é selecionado
-         /* case R.id.sairId:
-              Toast.makeText(this, "sair", Toast.LENGTH_SHORT).show();
-              finish();
-              System.exit(0);
-              break;*/
-          default:
-              break;
-      }
-       return true;
-  }
+    // Controla o que vai ser feito ao clicar em um item do menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Quando o Painel Disciplinas é selecionado
+            case R.id.painelDisciplinasId:
+                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
+                break;
+            // Quando o meu perfil é selecionado
+            case R.id.meuPerfilId:
+                Intent intentPerfil = new Intent(this, perfilUsuario.class);
+                startActivity(intentPerfil);
+                break;
+            // Quando o mapa é selecionado
+            case R.id.mapaId:
+                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
+                break;
+            // Quando log out é selecionado
+            case R.id.logoutID:
+                Toast.makeText(this, "Até logo!", Toast.LENGTH_SHORT).show();
+                MainActivity.fazerSignOut();
+                finish();
+                Intent intentLogout = new Intent(this, MainActivity.class);
+                startActivity(intentLogout);
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
 
 }
