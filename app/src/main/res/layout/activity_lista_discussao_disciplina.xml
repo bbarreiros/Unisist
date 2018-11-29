@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".listaDiscussaoDisciplina">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/alturalinha"
+        android:orientation="horizontal"
+        style="android:attr/buttonBarStyle" >
+
+        <Button
+            android:id="@+id/botaoNomeDisciplinaID"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/largura_botao_disciplina_painel"
+            android:layout_height="@dimen/alturalinha"
+            android:layout_weight="1"
+            android:text="Nome da Disciplina" />
+
+    <Button
+        android:id="@+id/botaoImportarArquivoId"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="@dimen/largura_botao_disciplina_painel"
+        android:layout_height="@dimen/alturalinha"
+        android:layout_weight="1"
+        android:text="Importar Arquivo" />
+
+</LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listaMensagensId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:itemCount="23" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/textoNovaMensagemId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Digite nova mensagem" />
+
+        <Button
+            android:id="@+id/botaoEnviarMensagemId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enviar" />
+    </LinearLayout>
+</LinearLayout>

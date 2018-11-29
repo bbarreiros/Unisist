@@ -30,7 +30,7 @@ public class visaoDisciplina extends AppCompatActivity {
 
     private disciplina disciplinaAtual, disciplinaRequisito;
     private String idDisciplina;
-    private Button botaoRequisito;
+    private Button botaoRequisito, botaoVerListaDiscussaoDisciplina;
     private Switch switchJaCursou, switchQuerCursar;
     private boolean jaCursou, querCursar;
 
@@ -50,6 +50,8 @@ public class visaoDisciplina extends AppCompatActivity {
         ab.setLogo(R.drawable.botao_login);
         ab.setDisplayUseLogoEnabled(true);
         ab.setDisplayHomeAsUpEnabled(true);
+
+
 
         if (extra != null){
             idDisciplina = extra.getString("idDisciplina");
@@ -78,6 +80,20 @@ public class visaoDisciplina extends AppCompatActivity {
                 }
             });
         }
+
+        botaoVerListaDiscussaoDisciplina = findViewById(R.id.botaoVerListaDiscussaoDisciplinaID);
+        botaoVerListaDiscussaoDisciplina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                Intent intent = new Intent(visaoDisciplina.this, listaDiscussaoDisciplina.class);
+
+                intent.putExtra("idDisciplina", idDisciplina);
+                startActivity(intent);
+            };
+
+
+        });
         jaCursou = disciplinaAtual.isJaCursou();
         querCursar = disciplinaAtual.isQuerCursar();
 

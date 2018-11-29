@@ -1,5 +1,7 @@
 package com.bctec.unisist;
 
+import java.util.List;
+
 public class disciplina {
 
     /*
@@ -10,6 +12,7 @@ public class disciplina {
     private int id, posicaoGrid;
     private boolean visivel, jaCursou, querCursar;
     private disciplina disciplinaRequisito;
+    private List<String> listaMensagemDisciplina;
 
     public disciplina getDisciplinaRequisito() {
         return disciplinaRequisito;
@@ -113,6 +116,13 @@ public class disciplina {
         this.visivel = visivel;
     }
 
+    public void setNovaMensagem (String novaMensagem){
+        listaMensagemDisciplina.add(novaMensagem);
+    }
+
+    public List<String> getListaMensagemDisciplina(){
+        return listaMensagemDisciplina;
+    }
 
 
 }

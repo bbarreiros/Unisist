@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".painelDisciplinas" />
         <activity android:name=".visaoDisciplina" />
-        <activity android:name=".perfilUsuario"></activity>
+        <activity android:name=".perfilUsuario" />
+        <activity android:name=".listaDiscussaoDisciplina"></activity>
     </application>
 
 </manifest>

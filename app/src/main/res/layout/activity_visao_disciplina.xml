@@ -75,28 +75,33 @@
 
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Ementa:" />
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ementa:" />
+            <TextView
+                android:id="@+id/textoDaEmentaId"
+                android:layout_width="match_parent"
+                android:layout_height="@android:dimen/thumbnail_height" />
+        </LinearLayout>
+    </ScrollView>
 
-                <TextView
-                    android:id="@+id/textoDaEmentaId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </ScrollView>
-
+    <Button
+        android:id="@+id/botaoVerListaDiscussaoDisciplinaID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver lista DIscussao da disciplina" />
 
 
 </LinearLayout>
