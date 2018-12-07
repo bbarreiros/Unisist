@@ -103,5 +103,10 @@
         android:layout_height="wrap_content"
         android:text="Ver lista DIscussao da disciplina" />
 
+    <Button
+        android:id="@+id/botaoMaterial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Compartilhamento de Materias" />
 
 </LinearLayout>

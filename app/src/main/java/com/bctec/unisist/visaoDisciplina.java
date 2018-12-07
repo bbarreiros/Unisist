@@ -30,7 +30,7 @@ public class visaoDisciplina extends AppCompatActivity {
 
     private disciplina disciplinaAtual, disciplinaRequisito;
     private String idDisciplina;
-    private Button botaoRequisito, botaoVerListaDiscussaoDisciplina;
+    private Button botaoRequisito, botaoVerListaDiscussaoDisciplina, botaoMaterial;
     private Switch switchJaCursou, switchQuerCursar;
     private boolean jaCursou, querCursar;
 
@@ -50,6 +50,9 @@ public class visaoDisciplina extends AppCompatActivity {
         ab.setLogo(R.drawable.botao_login);
         ab.setDisplayUseLogoEnabled(true);
         ab.setDisplayHomeAsUpEnabled(true);
+
+
+
 
 
 
@@ -94,6 +97,19 @@ public class visaoDisciplina extends AppCompatActivity {
 
 
         });
+
+        // botão para abrir o google drive com as pastas das disciplinas
+        botaoMaterial = findViewById(R.id.botaoMaterial);
+        botaoMaterial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                Intent intent = new Intent(visaoDisciplina.this, driveActivity.class);
+
+                startActivity(intent);
+            };
+        });
+
         jaCursou = disciplinaAtual.isJaCursou();
         querCursar = disciplinaAtual.isQuerCursar();
 
@@ -131,6 +147,8 @@ public class visaoDisciplina extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     private void preencheViews(String idDisciplina){
@@ -152,6 +170,10 @@ public class visaoDisciplina extends AppCompatActivity {
         disciplinaRequisito = disciplinaAtual.getDisciplinaRequisito();
         botaoDisciplinaRequidito.setText(disciplinaRequisito.getNome());
     }
+
+
+
+
     // Cria o menu de opções usando as que foram listadas no menu_opcoes.xml
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

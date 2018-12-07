@@ -43,8 +43,9 @@
 
         <activity
             android:name=".MapsActivity"
-            android:exported="true"
             android:label="@string/title_activity_maps"></activity>
+        <activity
+            android:name=".driveActivity"/>
     </application>
 
 </manifest>
