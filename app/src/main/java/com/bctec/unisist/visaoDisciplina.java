@@ -175,7 +175,8 @@ public class visaoDisciplina extends AppCompatActivity {
                 break;
             // Quando o mapa é selecionado
             case R.id.mapaId:
-                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT).show();
+                Intent intentMapa = new Intent(this, MapsActivity.class);
+                startActivity(intentMapa);
                 break;
             // Quando log out é selecionado
             case R.id.logoutID:
